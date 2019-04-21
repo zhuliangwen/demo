@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: user-service
+#    springboot 自动配置但数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/master
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.demo.pojo
+# 手动配置多数据源
+multiple:
+  datasource:
+    master:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 123456
+      url: jdbc:mysql://localhost:3306/master?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
+      username: root
+    other:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 123456
+      url: jdbc:mysql://localhost:3306/db_other?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
+      username: root
+    slave1:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 123456
+      url: jdbc:mysql://localhost:3306/db_slave1?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
+      username: root
+    slave2:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 123456
+      url: jdbc:mysql://localhost:3306/db_slave2?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
+      username: root
